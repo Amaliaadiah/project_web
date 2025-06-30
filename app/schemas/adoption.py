@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from enum import Enum
+from typing import Optional
 
 class StatusEnum(str, Enum):
     pending = "pending"
@@ -34,8 +35,8 @@ class AdoptionUpdate(BaseModel):
 class AdoptionOut(BaseModel):
     id: int
     status: StatusEnum
-    user: SimpleUser
-    pet: SimplePet
+    user: Optional[SimpleUser] = None
+    pet: Optional[SimplePet] = None 
 
     class Config:
         orm_mode = True

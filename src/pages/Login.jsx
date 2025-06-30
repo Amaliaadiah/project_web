@@ -1,10 +1,11 @@
 import { useState } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // ← Tambahkan useNavigate
 
 export default function Login() {
   const { login } = useAuth();
+  const navigate = useNavigate(); // ← Inisialisasi navigasi
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
 
@@ -19,20 +20,29 @@ export default function Login() {
       const payload = JSON.parse(atob(token.split(".")[1]));
       const role = payload.role;
 
-      login(token, role);
+      login(token, role); // ← Simpan token & role
+
+      // 🔁 Redirect berdasarkan role
+      if (role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/home");
+      }
     } catch (err) {
       setError("⚠️ Username atau password salah");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 px-4">
-      <div className="card w-full max-w-md bg-white shadow-xl border border-base-300">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#f9f3e9] to-[#f5e5d5] px-4">
+      <div className="card w-full max-w-md bg-white shadow-xl border border-[#8b5e3c] rounded-lg">
         <div className="card-body">
-          <h2 className="text-2xl font-bold mb-4 text-center">Masuk ke Akun Anda</h2>
+          <h2 className="text-3xl font-bold mb-4 text-center text-[#5e3a21]">
+            Masuk ke Akun Anda
+          </h2>
 
           {error && (
-            <div className="alert alert-error p-2 text-sm rounded mb-2">
+            <div className="alert alert-error p-2 text-sm rounded mb-2 bg-red-100 text-red-600">
               {error}
             </div>
           )}
@@ -42,7 +52,7 @@ export default function Login() {
               type="text"
               name="username"
               placeholder="Username"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full border-[#8b5e3c] focus:border-[#8b5e3c] focus:ring-[#8b5e3c]"
               onChange={handleChange}
               required
             />
@@ -50,18 +60,24 @@ export default function Login() {
               type="password"
               name="password"
               placeholder="Password"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full border-[#8b5e3c] focus:border-[#8b5e3c] focus:ring-[#8b5e3c]"
               onChange={handleChange}
               required
             />
-            <button type="submit" className="btn btn-primary w-full">
+            <button
+              type="submit"
+              className="btn btn-primary w-full bg-[#8b5e3c] hover:bg-[#5e3a21] text-white"
+            >
               Login
             </button>
           </form>
 
-          <p className="text-sm mt-4 text-center">
+          <p className="text-sm mt-4 text-center text-[#5e3a21]">
             Belum punya akun?{" "}
-            <Link to="/register" className="text-blue-500 font-medium hover:underline">
+            <Link
+              to="/register"
+              className="text-[#8b5e3c] font-medium hover:underline"
+            >
               Daftar sekarang
             </Link>
           </p>

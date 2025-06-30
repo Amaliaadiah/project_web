@@ -15,18 +15,18 @@ export default function Navbar() {
   const isActive = (path) => pathname === path;
 
   return (
-    <div className="navbar bg-base-100 shadow-md px-4 md:px-8">
-      {/* Logo / Brand */}
+    <div className="navbar bg-[#fff0d7] shadow-md px-4 md:px-8">
+      {/* Logo */}
       <div className="flex-1">
         <Link
           to="/"
-          className="text-2xl font-extrabold text-primary tracking-wide"
+          className="text-2xl font-extrabold text-[#5e3a21] tracking-wide"
         >
           PawPals <span className="text-lg">🐾</span>
         </Link>
       </div>
 
-      {/* Navigation Buttons */}
+      {/* Navigation */}
       <div className="flex-none space-x-2">
         {user ? (
           <>
@@ -34,41 +34,42 @@ export default function Navbar() {
             {user.role === "admin" ? (
               <Link
                 to="/admin"
-                className={`btn btn-sm normal-case ${
+                className={`btn btn-sm normal-case transition duration-200 ${
                   isActive("/admin")
-                    ? "btn-primary text-white"
-                    : "btn-ghost"
+                    ? "bg-[#8b5e3c] text-white border-[#8b5e3c]"
+                    : "bg-[#fff0d7] text-[#8b5e3c] hover:bg-[#8b5e3c] hover:text-white border border-[#8b5e3c]"
                 }`}
               >
                 Kelola Adopsi
               </Link>
             ) : (
               <>
-                {/* User biasa */}
                 <Link
                   to="/"
-                  className={`btn btn-sm normal-case ${
-                    isActive("/") ? "btn-primary text-white" : "btn-ghost"
+                  className={`btn btn-sm normal-case transition duration-200 ${
+                    isActive("/")
+                      ? "bg-[#8b5e3c] text-white border-[#8b5e3c]"
+                      : "bg-[#fff0d7] text-[#8b5e3c] hover:bg-[#8b5e3c] hover:text-white border border-[#8b5e3c]"
                   }`}
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/dashboard"
-                  className={`btn btn-sm normal-case ${
+                  className={`btn btn-sm normal-case transition duration-200 ${
                     isActive("/dashboard")
-                      ? "btn-primary text-white"
-                      : "btn-ghost"
+                      ? "bg-[#8b5e3c] text-white border-[#8b5e3c]"
+                      : "bg-[#fff0d7] text-[#8b5e3c] hover:bg-[#8b5e3c] hover:text-white border border-[#8b5e3c]"
                   }`}
                 >
                   Daftar Hewan
                 </Link>
                 <Link
                   to="/myadoptions"
-                  className={`btn btn-sm normal-case ${
+                  className={`btn btn-sm normal-case transition duration-200 ${
                     isActive("/myadoptions")
-                      ? "btn-primary text-white"
-                      : "btn-ghost"
+                      ? "bg-[#8b5e3c] text-white border-[#8b5e3c]"
+                      : "bg-[#fff0d7] text-[#8b5e3c] hover:bg-[#8b5e3c] hover:text-white border border-[#8b5e3c]"
                   }`}
                 >
                   Status Adopsi
@@ -76,10 +77,10 @@ export default function Navbar() {
               </>
             )}
 
-            {/* Logout untuk semua peran */}
+            {/* Logout */}
             <button
               onClick={handleLogout}
-              className="btn btn-outline btn-sm normal-case hover:btn-error"
+              className="btn btn-sm normal-case bg-[#fff0d7] text-[#8b5e3c] transition duration-200 hover:bg-[#8b5e3c] hover:text-white border border-[#8b5e3c]"
             >
               Logout
             </button>
@@ -87,29 +88,21 @@ export default function Navbar() {
         ) : (
           <>
             <Link
-              to="/"
-              className={`btn btn-sm normal-case ${
-                isActive("/") ? "btn-primary text-white" : "btn-ghost"
-              }`}
-            >
-              Beranda
-            </Link>
-            <Link
               to="/login"
-              className={`btn btn-sm normal-case ${
+              className={`btn btn-sm normal-case transition duration-200 ${
                 isActive("/login")
-                  ? "btn-primary text-white"
-                  : "btn-outline hover:btn-primary"
+                  ? "bg-[#8b5e3c] text-white border-[#8b5e3c]"
+                  : "bg-[#fff0d7] text-[#8b5e3c] hover:bg-[#8b5e3c] hover:text-white border border-[#8b5e3c]"
               }`}
             >
               Login
             </Link>
             <Link
               to="/register"
-              className={`btn btn-sm normal-case ${
+              className={`btn btn-sm normal-case transition duration-200 ${
                 isActive("/register")
-                  ? "btn-primary text-white"
-                  : "btn-primary btn-outline"
+                  ? "bg-[#8b5e3c] text-white border-[#8b5e3c]"
+                  : "bg-[#fff0d7] text-[#8b5e3c] hover:bg-[#8b5e3c] hover:text-white border border-[#8b5e3c]"
               }`}
             >
               Gabung

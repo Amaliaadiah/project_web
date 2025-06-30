@@ -1,23 +1,21 @@
+// context/AuthContext.js
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [redirectRole, setRedirectRole] = useState(null); // Tambahan
   const navigate = useNavigate();
 
-  // Cek localStorage saat pertama kali load
-  useEffect(() => {
+  // Ambil user dari localStorage saat pertama kali
+  const [user, setUser] = useState(() => {
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
-    if (token && role) {
-      setUser({ token, role });
-    }
-  }, []);
+    return token && role ? { token, role } : null;
+  });
 
-  // Redirect setelah login berdasarkan role
+  const [redirectRole, setRedirectRole] = useState(null);
+
   useEffect(() => {
     if (redirectRole) {
       if (redirectRole === "admin") {
@@ -25,7 +23,7 @@ export const AuthProvider = ({ children }) => {
       } else {
         navigate("/dashboard");
       }
-      setRedirectRole(null); // Reset setelah redirect
+      setRedirectRole(null);
     }
   }, [redirectRole, navigate]);
 
@@ -33,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
     setUser({ token, role });
-    setRedirectRole(role); // Set role untuk redirect nanti
+    setRedirectRole(role);
   };
 
   const logout = () => {

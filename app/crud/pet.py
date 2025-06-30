@@ -18,7 +18,7 @@ def get_pet_by_id(db: Session, pet_id: int):
 def update_pet(db: Session, pet_id: int, pet_data: PetUpdate):
     pet = get_pet_by_id(db, pet_id)
     if pet:
-        for key, value in pet_data.dict().items():
+        for key, value in pet_data.items():
             setattr(pet, key, value)
         db.commit()
         db.refresh(pet)
