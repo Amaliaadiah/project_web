@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/navbar";
@@ -36,8 +36,8 @@ export default function MyAdoptions() {
     return (
       <>
         <Navbar />
-        <div className="min-h-screen flex items-center justify-center bg-base-200">
-          <p className="text-xl font-semibold">Silakan login dulu 🐾</p>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#f9f3e9] to-[#f5e5d5]">
+          <p className="text-xl font-semibold text-[#5e3a21]">Silakan login dulu 🐾</p>
         </div>
         <Footer />
       </>
@@ -48,17 +48,17 @@ export default function MyAdoptions() {
     <>
       <Navbar />
 
-      <div className="min-h-screen bg-base-200 p-4">
-        <h1 className="text-2xl md:text-3xl font-bold mb-6">Pengajuan Adopsi Saya</h1>
+      <div className="min-h-screen bg-base-200 p-4 bg-gradient-to-br from-[#f9f3e9] to-[#f5e5d5]">
+        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-[#5e3a21]">Pengajuan Adopsi Saya</h1>
 
         {loading ? (
-          <p>Loading...</p>
+          <p className="text-[#5e3a21]">Loading...</p>
         ) : adoptions.length === 0 ? (
-          <p>Belum ada pengajuan adopsi.</p>
+          <p className="text-[#5e3a21]">Belum ada pengajuan adopsi.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {adoptions.map((item) => (
-              <div key={item.id} className="card bg-base-100 shadow-md">
+              <div key={item.id} className="card bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
                 <figure>
                   <img
                     src={
@@ -71,10 +71,10 @@ export default function MyAdoptions() {
                   />
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title">{item.pet?.name || "-"}</h2>
-                  <p>Jenis: {item.pet?.type || "-"}</p>
-                  <p>Umur: {item.pet?.age || "-"} tahun</p>
-                  <p>{item.pet?.description || "-"}</p>
+                  <h2 className="card-title text-[#5e3a21]">{item.pet?.name || "-"}</h2>
+                  <p className="text-[#5e3a21]">Jenis: {item.pet?.type || "-"}</p>
+                  <p className="text-[#5e3a21]">Umur: {item.pet?.age || "-"} tahun</p>
+                  <p className="text-[#5e3a21]">{item.pet?.description || "-"}</p>
                   {item.created_at && (
                     <p className="text-sm text-gray-500 mt-1">
                       Diajukan:{" "}
@@ -96,7 +96,6 @@ export default function MyAdoptions() {
                   >
                     Status: {item.status}
                   </div>
-
                 </div>
               </div>
             ))}

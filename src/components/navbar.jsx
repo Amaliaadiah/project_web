@@ -15,12 +15,12 @@ export default function Navbar() {
   const isActive = (path) => pathname === path;
 
   return (
-    <div className="navbar bg-base-100 shadow-md px-4 md:px-8">
+    <div className="navbar bg-[#f9f3e9] shadow-md px-4 md:px-8">
       {/* Logo / Brand */}
       <div className="flex-1">
         <Link
           to="/"
-          className="text-2xl font-extrabold text-primary tracking-wide"
+          className="text-2xl font-extrabold text-[#5e3a21] tracking-wide"
         >
           PawPals <span className="text-lg">🐾</span>
         </Link>
@@ -36,7 +36,7 @@ export default function Navbar() {
                 to="/admin"
                 className={`btn btn-sm normal-case ${
                   isActive("/admin")
-                    ? "btn-primary text-white"
+                    ? "btn-primary bg-[#8b5e3c] text-white"
                     : "btn-ghost"
                 }`}
               >
@@ -48,7 +48,7 @@ export default function Navbar() {
                 <Link
                   to="/"
                   className={`btn btn-sm normal-case ${
-                    isActive("/") ? "btn-primary text-white" : "btn-ghost"
+                    isActive("/") ? "btn-primary bg-[#8b5e3c] text-white" : "btn-ghost"
                   }`}
                 >
                   Dashboard
@@ -57,8 +57,8 @@ export default function Navbar() {
                   to="/dashboard"
                   className={`btn btn-sm normal-case ${
                     isActive("/dashboard")
-                      ? "btn-primary text-white"
-                      : "btn-ghost"
+                      ? "btn-primary bg-[#8b5e3c] text-white"
+                      : "btn-primary bg-[#8b5e3c] text-white"
                   }`}
                 >
                   Daftar Hewan
@@ -67,8 +67,8 @@ export default function Navbar() {
                   to="/myadoptions"
                   className={`btn btn-sm normal-case ${
                     isActive("/myadoptions")
-                      ? "btn-primary text-white"
-                      : "btn-ghost"
+                      ? "btn-primary bg-[#8b5e3c] text-white"
+                      : "btn-primary bg-[#8b5e3c] text-white"
                   }`}
                 >
                   Status Adopsi
@@ -79,7 +79,7 @@ export default function Navbar() {
             {/* Logout untuk semua peran */}
             <button
               onClick={handleLogout}
-              className="btn btn-outline btn-sm normal-case hover:btn-error"
+              className="btn btn-outline btn-sm normal-case bg-[#8b5e3c] text-white"
             >
               Logout
             </button>
@@ -87,19 +87,11 @@ export default function Navbar() {
         ) : (
           <>
             <Link
-              to="/"
-              className={`btn btn-sm normal-case ${
-                isActive("/") ? "btn-primary text-white" : "btn-ghost"
-              }`}
-            >
-              Beranda
-            </Link>
-            <Link
               to="/login"
               className={`btn btn-sm normal-case ${
                 isActive("/login")
-                  ? "btn-primary text-white"
-                  : "btn-outline hover:btn-primary"
+                  ? "btn-primary bg-[#8b5e3c] text-white"
+                  : "btn-outline bg-[#8b5e3c] text-white"
               }`}
             >
               Login
@@ -108,7 +100,7 @@ export default function Navbar() {
               to="/register"
               className={`btn btn-sm normal-case ${
                 isActive("/register")
-                  ? "btn-primary text-white"
+                  ? "btn-primary bg-[#8b5e3c] text-white"
                   : "btn-primary btn-outline"
               }`}
             >
