@@ -25,7 +25,7 @@ def semua_pengajuan(db: Session = Depends(get_db), _: str = Depends(get_current_
 def update_status(adoption_id: int, payload: AdoptionUpdate, db: Session = Depends(get_db), _: str = Depends(get_current_admin)):
     result = crud_adoption.update_adoption_status(db, adoption_id, status=payload.status)
     if not result:
-        raise HTTPException(status_code=404, detail="Data adopsi ga ketemu")
+        raise HTTPException(status_code=404, detail="Data adopsi tidak ditemukan")
     return result
 
 @router.delete("/{adoption_id}")

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/navbar";  // ✅ pastikan path-nya benar
-import Footer from "../components/Footer";  // ✅ pastikan path-nya benar
+import Navbar from "../components/navbar";  
+import Footer from "../components/Footer";  
 
 export default function DashboardUser () {
   const { user } = useAuth();

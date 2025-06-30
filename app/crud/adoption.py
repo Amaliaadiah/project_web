@@ -4,7 +4,7 @@ from app.schemas.adoption import AdoptionCreate, AdoptionUpdate
 from fastapi import HTTPException
 
 def create_adoption(db: Session, user_id: int, pet_id: int):
-    # ✅ Cek apakah user udah ajukan adopsi untuk pet ini
+    #
     existing = db.query(Adoption).filter(
         Adoption.user_id == user_id,
         Adoption.pet_id == pet_id

@@ -187,11 +187,11 @@ export default function DashboardAdmin() {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>Foto</th>
-                  <th>Nama</th>
-                  <th>Jenis</th>
-                  <th>Umur</th>
-                  <th>Aksi</th>
+                  <th className="text-[#5e3a21]">Foto</th>
+                  <th className="text-[#5e3a21]">Nama</th>
+                  <th className="text-[#5e3a21]">Jenis</th>
+                  <th className="text-[#5e3a21]">Umur</th>
+                  <th className="text-[#5e3a21]">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -230,20 +230,20 @@ export default function DashboardAdmin() {
         <section>
           <h2 className="text-xl font-semibold mb-4 text-[#5e3a21]">Pengajuan Adopsi</h2>
           <div className="overflow-x-auto">
-            <table className="table table-zebra w-full">
+            <table className="table w-full">
               <thead>
                 <tr>
-                  <th>Hewan</th>
-                  <th>Pengguna</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
+                  <th className="text-[#5e3a21]">Hewan</th>
+                  <th className="text-[#5e3a21]">Pengguna</th>
+                  <th className="text-[#5e3a21]">Status</th>
+                  <th className="text-[#5e3a21]">Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 {adoptions.map((a) => (
                   <tr key={a.id} className="bg-[#f9f3e9]">
-                    <td>{a.pet?.name || "-"}</td>
-                    <td>{a.user?.username || "-"}</td>
+                    <td className="text-[#5e3a21]">{a.pet?.name || "-"}</td>
+                    <td className="text-[#5e3a21]">{a.user?.username || "-"}</td>
                     <td>
                       <span
                         className={`badge px-3 py-1 text-sm capitalize ${
