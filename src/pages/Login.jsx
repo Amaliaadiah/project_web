@@ -1,11 +1,11 @@
 import { useState } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom"; // ← Tambahkan useNavigate
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { login } = useAuth();
-  const navigate = useNavigate(); // ← Inisialisasi navigasi
+  const navigate = useNavigate();
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
 
@@ -20,9 +20,8 @@ export default function Login() {
       const payload = JSON.parse(atob(token.split(".")[1]));
       const role = payload.role;
 
-      login(token, role); // ← Simpan token & role
+      login(token, role);
 
-      // 🔁 Redirect berdasarkan role
       if (role === "admin") {
         navigate("/admin");
       } else {
